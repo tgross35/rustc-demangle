@@ -1282,6 +1282,19 @@ mod tests {
     }
 
     #[test]
+    fn demangle_crate_productions() {
+        t_nohash!("_RC3f16", "f16");
+        t_nohash_type!("INtC03FooC3f16E", "::Foo<f16>");
+        // t_nohash!("_RMa1bINtB<REF>_4TypeC4f128E", "f16");
+        // t_nohash!("_RMC1aC2bb", "f16");
+        t!("_RMNvC1a1b", "abc");
+        // t!("_RMsb_NvCsCRATE_HASH_1a1bINtB<REF>_4TypeC4f128E", "abc");
+        // t_nohash!("_RM1a1bINtB1_4TypeC4f128E", "f16");
+        // t_nohash!("_RM4TypeC4f128E", "f16");
+        // _RMsb_NvCsCRATE_HASH_1a1bINtB<REF>_4TypeC4f128E
+    }
+
+    #[test]
     fn demangle_utf8_idents() {
         t_nohash!(
             "_RNqCs4fqI2P2rA04_11utf8_identsu30____7hkackfecea1cbdathfdh9hlq6y",
